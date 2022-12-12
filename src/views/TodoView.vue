@@ -1,6 +1,14 @@
 <template>
     <div class="todo">
         <h1>Todo app</h1>
+
+        <form>
+            <h3>Добавить задачу</h3>
+            <input type="text" class="input" placeholder="Название задачи">
+            <input type="text" class="input" placeholder="Описание задачи">
+            <button type="submit" class="btn">Добавить</button>
+        </form>
+
         <div class="task" v-for="(task, key) in tasks" :key="key">
             <div class="title"><strong>Заголовок:</strong>{{ task.title }}</div>
             <div class="text"><strong>Текст</strong>{{ task.text }}</div>
@@ -24,13 +32,45 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
+    h3 {
+        text-align: left;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input {
+        width: 100%;
+        margin-top: 15px;
+        padding: 10px 15px;
+        border: 2px solid teal;
+    }
+
+    .btn {
+        align-self: flex-end;
+        margin-top: 15px;
+        padding: 10px 15px;
+        border: 2px solid teal;
+        background-color: transparent;
+        transition: .5s;
+
+        &:hover {
+            border: 2px solid teal;
+            background-color: teal;
+            color: #fff;
+            cursor: pointer;
+        }
+       
+    }
     .todo {
         padding: 15px;
     }
