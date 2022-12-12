@@ -2,11 +2,28 @@
     <div class="todo">
         <h1>Todo app</h1>
 
-        <form>
+        <form @submit.prevent>
             <h3>Добавить задачу</h3>
-            <input type="text" class="input" placeholder="Название задачи">
-            <input type="text" class="input" placeholder="Описание задачи">
-            <button type="submit" class="btn">Добавить</button>
+            <input 
+            v-bind:value="title"
+            @input="title = $event.target.value"
+            type="text" 
+            class="input" 
+            placeholder="Название задачи">
+
+            <input 
+            v-bind:value="text"
+            @input="text = $event.target.value"
+            type="text" 
+            class="input" 
+            placeholder="Описание задачи">
+
+            <button 
+            type="submit" 
+            class="btn" 
+            @click="addTask">
+            Добавить
+            </button>
         </form>
 
         <div class="task" v-for="(task, key) in tasks" :key="key">
@@ -26,7 +43,22 @@
                     {id: 2, title: 'Задача 2', text: 'Подробно о задаче 2'},
                     {id: 3, title: 'Задача 3', text: 'Подробно о задаче 3'},
                     {id: 4, title: 'Задача 4', text: 'Подробно о задаче 4'},
-                ]
+                ],
+                title: '',
+                text: ''
+            }
+        },
+
+        methods: {
+            addTask() {
+                const newTask = {
+                    id: Date.now(),
+                    title: this.title,
+                    text: this.text
+                }
+                this.tasks.push(newTask);
+                this.title = '';
+                this.text = '';
             }
         }
     }
