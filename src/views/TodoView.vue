@@ -27,8 +27,8 @@
         </form>
 
         <div class="task" v-for="(task, key) in tasks" :key="key">
-            <div class="title"><strong>Заголовок:</strong>{{ task.title }}</div>
-            <div class="text"><strong>Текст</strong>{{ task.text }}</div>
+            <div class="title"><strong>Заголовок: </strong>{{ task.title }}</div>
+            <div class="text"><strong>Текст: </strong>{{ task.text }}</div>
         </div>
     </div>    
 </template> 
